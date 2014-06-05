@@ -1,0 +1,37 @@
+markdown: kramdown
+permalink: /blog/:year/:title/
+relative_permalinks: true
+exclude:
+  - CNAME
+  - Gemfile
+  - Gruntfile.js
+  - LICENSE
+  - node_modules/
+  - package.json
+  - Rakefile
+  - README.md
+  - vendor/
+
+layouts: ./_noita
+
+noita:
+  name: Noita
+  description: Jekyll theme built with Foundation
+  author:
+    name: Anatol Broder
+    url: http://penibelst.de/
+  lang: en
+  favicons:
+    - /assets/2014/04/21/favicon-152.png
+  topbar:
+    toggle: Menu
+    right:
+      - name: About
+        url: /about/
+      - name: Guide
+        url: /guide/
+      - name: Blog
+        url: /blog/
+      - name: Repository
+        url: https://github.com/penibelst/jekyll-noita
+        class: small button
