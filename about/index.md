@@ -1,51 +1,46 @@
 ---
 layout: page
-title: About
+title: "About Me"
+date: 2013-04-16 23:26
+comments: true
+sharing: true
+footer: true
 ---
 
-Noita is a [Jekyll][0] theme built with the responsive front-end framework [Foundation][1]. The theme is free and fully compatible with [Github Pages][2].
 
-## Quick Guide
+I'm a software engineer currently working for [KEDACOM][link1], mainly to do back-end development of video surveillance products. I graduated from Jiangsu University with a master’s degree in Computer Application in 2013.
 
-The fastest way is to use Github Pages:
+I love reading, thinking, programming, cooking, like to do something funny/geek/stuff at leisure. I appreciate open source culture, unix development philosophy, and familiar with programming in the Linux Environment, making good utilization of Linux tool chain.
 
-1. Fork the [repository][3].
-1. Set up your [custom domain][4].
-1. Start blogging.
+Now I mainly focus on server-side development, give attention to audio/video communication, building high-performance server. In addition,  Studying distributed system is my another favourite. I hope to become an expert in this field.
 
-## Performance
+I'm now living in Shanghai,China. You can find me in these places:  
+[GitHub][link2]  
+[Weibo][link3]  
+[Douban][link4]  
+[Zhihu][link5]  
+[Email: bao.z.h.2008@gmail.com][link6]
 
-Performance tests made with Web Pagetest:
+Key words: C/C++, distribute systems, software development, shell, python
 
-* [Mobile][5]
-* [Desktop][6]
 
-## Validation
+[link1]: http://www.kedacom.com/
+[link2]: https://github.com/baozh
+[link3]: http://weibo.com/baozenghui
+[link4]: http://www.douban.com/people/baozenghui/
+[link5]: http://www.zhihu.com/people/bao-zeng-hui
+[link6]: mailto:bao.z.h.2008@Gmail.com
 
-[![Build Status][7]][8]
 
-Noita creates pages with valid:
 
-* markup;
-* internal and external links;
-* image references.
 
-## Dependencies
 
-Noita contains free libraries:
 
-* [Foundation][1]
-* [jQuery][9]
-* [Normalize][10]
 
-[0]: http://jekyllrb.com/
-[1]: http://foundation.zurb.com/
-[2]: https://pages.github.com/
-[3]: https://github.com/penibelst/jekyll-noita
-[4]: https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages
-[5]: http://www.webpagetest.org/result/140424_2T_15NB/
-[6]: http://www.webpagetest.org/result/140424_RR_15PQ/
-[7]: https://travis-ci.org/penibelst/jekyll-noita.svg?branch=gh-pages
-[8]: https://travis-ci.org/penibelst/jekyll-noita
-[9]: http://jquery.com/
-[10]: http://necolas.github.io/normalize.css/
+
+
+
+
+
+
+
