@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>404 Page - ZengHui Bao's blog</title>
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
     <meta name="description" content="zenghui bao's program world.">
     <meta name="author" content="zenghui bao">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,28 +26,13 @@
                  <ul class="page-nav">
                      <li><a href="/">Home</a></li>
                      <li><a href="/archive.html">Archive</a></li>
-                     <li><a href="/about">About</a></li>
+                     <li><a href="{{ root_url }}/about">About</a></li>
                  </ul>
              </div>
          </div>
      </div>
      <div class="page-article">
-         <div class="page-header">
-    <h2>404 Page</h2>
-</div>
-<div>
-    <div class="page-blank">
-    <div>
-        <h3>Not found.</h3>
-        <p>回到首页<a href="/">首页</a>, 或者告知管理员[bao.z.h.2008@gmail.com]</p>
-    </div>
-</div>
-
-
-
-</div>
-
-
+         {{ content }}
      </div>
      <div class="page-footer">
          <span>
@@ -64,18 +49,7 @@
             prettyPrint();
         });
      </script>
-     <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-34850864-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-</script>
-
-
+     {% include google_analysis.md %}
 </body>
 </html>
 

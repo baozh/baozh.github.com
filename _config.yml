@@ -1,37 +1,8 @@
-markdown: kramdown
-permalink: /blog/:year/:title/
-relative_permalinks: true
-exclude:
-  - CNAME
-  - Gemfile
-  - Gruntfile.js
-  - LICENSE
-  - node_modules/
-  - package.json
-  - Rakefile
-  - README.md
-  - vendor/
+root: /
+permalink: /:year-:month/:title/
+markdown: rdiscount
+pygments: false
+paginate: 5
 
-layouts: ./_noita
+title: ZengHui Bao's blog
 
-noita:
-  name: Noita
-  description: Jekyll theme built with Foundation
-  author:
-    name: Anatol Broder
-    url: http://penibelst.de/
-  lang: en
-  favicons:
-    - /assets/2014/04/21/favicon-152.png
-  topbar:
-    toggle: Menu
-    right:
-      - name: About
-        url: /about/
-      - name: Guide
-        url: /guide/
-      - name: Blog
-        url: /blog/
-      - name: Repository
-        url: https://github.com/baozh
-        class: small button
