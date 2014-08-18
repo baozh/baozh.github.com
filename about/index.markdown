@@ -1,12 +1,7 @@
 ---
-layout: page
-title: "About Me"
-date: 2013-04-16 23:26
-comments: true
-sharing: true
-footer: true
+layout: page_comment
+title: About Me
 ---
-
 
 I'm a software engineer currently working for [KEDACOM][link1], mainly to do back-end development of video surveillance products. I graduated from Jiangsu University with a master’s degree in Computer Application in 2013.
 
@@ -30,17 +25,4 @@ Key words: C/C++, distribute systems, software development, shell, python
 [link4]: http://www.douban.com/people/baozenghui/
 [link5]: http://www.zhihu.com/people/bao-zeng-hui
 [link6]: mailto:bao.z.h.2008@Gmail.com
-
-
-
-{% include disqus_comments.md %}
-
-
-
-
-
-
-
-
-
 

@@ -1,4 +1,4 @@
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<!-- Duoshuo Comment BEGIN -->
 	<div class="ds-thread"></div>
 	<script type="text/javascript">
 		var duoshuoQuery = {short_name:"zenghui123"};
@@ -11,6 +11,6 @@
 			 || document.getElementsByTagName('body')[0]).appendChild(ds);
 		})();
 	</script>
-	<!-- 多说公共JS代码 end -->
+<!-- Duoshuo Comment END -->
 
 
