@@ -5,3 +5,5 @@ pygments: false
 paginate: 5
 
 title: ZengHui Bao's blog
+
+rss_path : /rss.xml
