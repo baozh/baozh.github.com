@@ -14,11 +14,10 @@ I love reading, thinking, programming, cooking, like to do something funny/geek/
 
 Now I mainly focus on server-side development, give attention to audio/video communication, building high-performance server. In addition,  Studying distributed system is my another favourite. I hope to become an expert in this field.
 
-I'm now living in Shanghai,China. You can find me in these places:  
+I'm now living in Shanghai,China. You can find me in these places: 
+ 
 [GitHub][link2]  
 [Weibo][link3]  
-[Douban][link4]  
-[Zhihu][link5]  
 [Email: bao.z.h.2008@gmail.com][link6]
 
 Key words: C/C++, distribute systems, software development, shell, python
