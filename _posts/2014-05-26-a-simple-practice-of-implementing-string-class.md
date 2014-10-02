@@ -14,7 +14,7 @@ Recently I read chenshuo's blog, [《A proper implementation of string class in 
 
 ###  Requirements
 
-The specific requirement is these:
+The specific requirements are these:
 
 1. Support conversion from/to traditional c string.
 
