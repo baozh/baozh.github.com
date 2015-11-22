@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>如何在C/C++中调用Shell脚本 - ZengHui Bao's blog</title>
+    <meta name="description" content="zenghui bao's program world.">
+    <meta name="author" content="zenghui bao">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/favicon.ico" rel="shortcut icon">
+    <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/static/css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/static/google-code-prettify/prettify.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/static/css/application.css" rel="stylesheet" type="text/css" media="all">
+    <script src="/static/js/jquery.js" type="text/javascript"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+     <div class="page-container">
+     <div class="page-heading">
+         <div class="page-brand">
+             <h1><a href="/">A Diligent Programmer</a></h1>
+			 <h2><font size="3">Zenghui Bao's programming world.</font></h2>
+         </div>
+         <div class="page-navbar">
+             <div class="page-navbar-container">
+                 <ul class="page-nav">
+                     <li><a href="/">Home</a></li>
+                     <li><a href="/archive.html">Archive</a></li>
+                     <li><a href="/about">About</a></li>
+                 </ul>
+             </div>
+         </div>
+     </div>
+     <div class="page-article">
+         <div class="page-content">
+    <div class="post-heading">
+        如何在C/C++中调用Shell脚本
+    </div>
+    <div class="post-meta">
+        <span>
+            Posted on:
+            <a href="/2013-11/how-to-call-shell-script-in-c-plus-plus-program/"><span class='month'>Nov</span> <span class='day'>10</span> <span class='year'>2013</span></a>
+        </span>
+        <span><i class="fa fa-ellipsis-v"></i></span>
+        <span>
+            Categories:
+            
+            <a href="/categories.html#Software_development Shell-ref">Software_development Shell</a>
+            
+        </span>
+        <span><i class="fa fa-ellipsis-v"></i></span>
+        <span>
+            Tags:
+            
+            <a href="/tags.html#shell system函数 管道-ref">shell system函数 管道</a>
+            
+        <span>
+    </div>
+    <div class="post-entry">
+        <h3>缘起</h3>
+
+<p>在Linux平台下开发程序时，经常要处理一些锁碎的事情，比如删除某个目录下符合某种特征的文件，安装程序到某个目录下，打包备份一个程序，这些在Linux中很容易用shell来处理。在开发后台程序时，也经常要处理程序的安装、升级、备份，通常这些功能用shell脚本实现。所以不可避免的，要在程序中调用shell命令或shell脚本。之前考虑过这个问题，但没有深究。最近在维护一个项目时，要在C++程序中调用shell脚本来实现程序的升级和备份，所以花时间研究了一下，遂成本文。</p>
+
+<!--more-->
+
+
+<h3>方法一：使用system函数</h3>
+
+<pre><code class="c++">#include &lt;stdlib.h&gt;
+int system(const char *string);
+</code></pre>
+
+<p><code>system()</code>会调用<code>fork()</code>产生子进程，由子进程来调用<code>/bin/sh-c string</code>来执行参数string字符串所代表的命令，此命令执行完后随即返回原调用的进程。</p>
+
+<p>返回值：</p>
+
+<ul>
+<li>=-1:出现错误</li>
+<li>=0:调用成功但是没有出现子进程</li>
+<li>>0:成功退出的子进程的id</li>
+</ul>
+
+
+<p>如果<code>system()</code>在调用/bin/sh时失败则返回127，其他失败原因返回-1。若参数string为空指针(NULL)，则返回非零值。如果<code>system()</code>调用成功则最后会返回执行shell命令后的返回值，但是此返回值也有可能为<code>system()</code>调用/bin/sh失败所返回的127，因此最好能再检查errno来确认执行成功。</p>
+
+<p>根据<code>system()</code>的返回值来判断shell脚本是否执行成功是一件比较繁琐的事情(参见这两篇文章：<a href="http://blog.csdn.net/yangruibao/article/details/7255787">博文一</a>，<a href="http://blog.csdn.net/ddkxddkx/article/details/7019408">博文二</a>)，且无法取得shell脚本的返回值。所以通常只是用<code>system()</code>来调用一个shell命令，或较短的shell脚本。</p>
+
+<h3>方法二：使用popen函数，创建管道来连接两个程序的输入输出</h3>
+
+<pre><code class="cpp">#include &lt;stdio.h&gt;
+FILE* popen ( const char *command , const char *type );
+int pclose ( FILE *stream );
+</code></pre>
+
+<p><code>popen()</code>会调用<code>fork()</code>产生子进程，然后从子进程中调用<code>/bin/sh -c</code>来执行参数command的指令。参数type可使用r代表读取，w代表写入。依照mode值，<code>popen()</code>会建立管道连接到子进程的标准输出流或标准输入流，然后返回一个文件指针。随后进程便可利用此文件指针来读取子进程的输出流或是写入到子进程的标准输入流中。此外，所有使用文件指针(FILE*)操作的函数也都可以使用，除了<code>fclose()</code>以外。</p>
+
+<p>具体来说：</p>
+
+<p><code>popen()</code>函数通过创建一个管道，调用<code>fork()</code>产生一个子进程，执行一个shell以运行命令来开启一个进程。这个进程必须由<code>pclose()</code>函数关闭，而不是<code>fclose()</code>函数。<code>pclose()</code>函数关闭标准I/O流，等待命令执行结束，然后返回shell的终止状态。如果shell不能被执行，则<code>pclose()</code>返回的终止状态与shell已执行exit一样。</p>
+
+<p>type参数只能是读或者写中的一种，得到的返回值（标准I/O流）也具有和type相应的只读或只写类型。如果type是"r"，则文件指针连接到command的标准输出；如果type是"w"，则文件指针连接到command的标准输入。</p>
+
+<p><code>popen()</code>的返回值是个标准I/O流，必须由<code>pclose</code>来终止。前面提到这个流是单向的，所以向这个流写内容相当于写入该命令的标准输入；与之相反的，从流中读数据相当于读取命令的标准输出。</p>
+
+<p>例：在~/myprogram/目录下有shell脚本<code>test.sh</code>(打印HOME环境变量)，在C程序中调用shell脚本，并获取返回信息。</p>
+
+<pre><code class="sh test.sh">#!bin/bash 
+echo $HOME
+</code></pre>
+
+<p>在该目录下新建一个c文件<code>systemtest.c</code>，内容为：</p>
+
+<pre><code class="cpp systemtest.c">#include&lt;stdio.h&gt;
+
+int main()
+{
+    FILE *fp;
+    char buffer[80];
+
+    fp=popen(“~/myprogram/test.sh”,”r”);    //以读方式，fork产生一个子进程，执行shell命令
+    fgets(buffer,sizeof(buffer),fp);       //读取shell脚本中输出(stdout)的值
+    printf(“%s”,buffer);
+    pclose(fp);
+
+    return 0;
+}
+</code></pre>
+
+<p>执行结果如下：</p>
+
+<pre><code class="cpp">bao@bao-Matrix:~/myprogram$vim systemtest.c
+bao@bao-Matrix:~/myprogram$gcc systemtest.c -o systemtest
+bao@bao-Matrix:~/myprogram$./systemtest
+/home/bao
+</code></pre>
+
+<h3>具体实现</h3>
+
+<p>根据程序开发需要，不仅需要执行shell脚本，而且要从脚本获取返回值。这个返回值可以是数值，也可以是字符串，或者任何标识脚本是否执行成功的值。</p>
+
+<ol>
+<li>调用<code>ExecuteShell()</code>传入脚本的路径及参数。在<code>ExecuteShell()</code>函数中，调用<code>popen()</code>执行shell脚本，通过fgets获取执行结果。执行结果中，1代表shell脚本执行成功，否则执行失败。（为什么不使用0作为成功判断，原因在于shell脚本发生任何不可控的错误时，stderr返回值都为0）</li>
+<li>在shell脚本中，输出结果用<code>echo/printf</code>输出来(echo 1表示执行成功。如果执行过程中失败，则将错误信息重定向到日志文件)。echo输出的，会通过管道，传出到stdout。因为<code>popen()</code>是以读方式打开shell脚本的。</li>
+</ol>
+
+
+<p>其中，<code>ExecuteShell()</code>可以如下实现：</p>
+
+<pre><code class="c++">int ExecuteShell(LPCSTR pShellName, char *szFormat, ...)
+{
+    if(pShellName == NULL)
+    {
+        return SHELL_RET_FAIL;
+    }
+
+    char szParam[256] = {0};
+    char szCommand[256*2] = {0};
+    char szResult[256] = {0};
+    FILE* fp = NULL;
+    int dwRet = 0;
+
+    va_list pvList;
+    va_start(pvList, szFormat); 
+    const u32 actLen = vsprintf(szParam, szFormat, pvList);   //把所有参数都存入szParam字符串中
+    if((actLen &lt;= 0) || (actLen &gt;= sizeof(szParam)))
+    {   
+        return SHELL_RET_FAIL;
+    }
+    va_end(pvList);
+
+    sprintf(szCommand, "%s %s", pShellName, szParam);     //取得执行shell脚本的命令szCommand
+    fp = popen(szCommand, "r");         //以读方式，fork产生一个子进程，执行shell命令
+    if(fp == NULL)
+    {
+        return SHELL_RET_FAIL;
+    }
+
+    fgets(szResult,sizeof(szResult),fp);                  //读取shell脚本中输出(stdout)的值，即用echo输出的东西。
+    pclose(fp);
+
+    dwRet = atol(szResult);      //如果输出不为1，则说明执行失败！
+    if( dwRet != 1 )
+    {
+        return SHELL_RET_FAIL;      
+    }
+
+    return SHELL_RET_OK;
+}
+</code></pre>
+
+<ul>
+<li>在代码中，无论失败还是成功，使用“echo”命令返回执行结果。由于<code>popen()</code>管道的存在，本来应该在标准输出显示的echo值被重定向到C/C++程序中。</li>
+<li>脚本执行成功，根据约定，返回数值“1”作为执行结果。</li>
+<li>程序过程中，如果发现任何错误，统一重定向到日志文件，并且echo输出到stdout。</li>
+<li>脚本中使用重定向的方法，把标准输出和标准错误全部重定向到“/dev/null”。由业务判断操作成功与否，返回错误值。如下：</li>
+</ul>
+
+
+<pre><code class="sh">tar tvf $UPDATE_FILE | grep "tvm/tvm" &gt;/dev/null 2&gt;&amp;1
+</code></pre>
+
+<p>具体的可以看一下这两个示例代码，<a href="https://github.com/baozh/code-snippets/blob/master/ExecuteShell.cpp">代码1</a>，<a href="https://github.com/baozh/code-snippets/blob/master/upgrade.sh">代码2</a>。</p>
+
+    </div>
+</div>
+<div class="post-blank post-pager">
+    <ul class="pager">
+        
+        <li class="previous"><a href="/2013-09/editor-summary-vc-vs-vim/">&larr; Prev</a></li>
+        
+        
+        <li class="next"><a href="/2014-01/google-cpp-style-guide/">Next &rarr;</a></li>
+        
+    </ul>
+</div>
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+		var duoshuoQuery = {short_name:"zenghui123"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
+
+
+
+
+     </div>
+     <div class="page-footer">
+         <span>
+             Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> 
+             | Hosted by <a href="http://github.com">Github.com</a> 
+         </span>
+     </div>
+     </div>
+     <script src="/static/js/bootstrap.js" type="text/javascript"></script>
+     <script src="/static/google-code-prettify/prettify.js" type="text/javascript"></script>
+     <script type="text/javascript">
+        $(document).ready(function() {
+            $('pre').addClass('prettyprint').attr('style', 'overflow:auto');
+            prettyPrint();
+        });
+     </script>
+     <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34850864-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+
+</body>
+</html>
+

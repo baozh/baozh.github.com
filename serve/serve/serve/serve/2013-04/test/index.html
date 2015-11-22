@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>A Note of Learning Markdown - ZengHui Bao's blog</title>
+    <meta name="description" content="zenghui bao's program world.">
+    <meta name="author" content="zenghui bao">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/favicon.ico" rel="shortcut icon">
+    <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/static/css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/static/google-code-prettify/prettify.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/static/css/application.css" rel="stylesheet" type="text/css" media="all">
+    <script src="/static/js/jquery.js" type="text/javascript"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+     <div class="page-container">
+     <div class="page-heading">
+         <div class="page-brand">
+             <h1><a href="/">A Diligent Programmer</a></h1>
+			 <h2><font size="3">Zenghui Bao's programming world.</font></h2>
+         </div>
+         <div class="page-navbar">
+             <div class="page-navbar-container">
+                 <ul class="page-nav">
+                     <li><a href="/">Home</a></li>
+                     <li><a href="/archive.html">Archive</a></li>
+                     <li><a href="/about">About</a></li>
+                 </ul>
+             </div>
+         </div>
+     </div>
+     <div class="page-article">
+         <div class="page-content">
+    <div class="post-heading">
+        A Note of Learning Markdown
+    </div>
+    <div class="post-meta">
+        <span>
+            Posted on:
+            <a href="/2013-04/test/"><span class='month'>Apr</span> <span class='day'>17</span> <span class='year'>2013</span></a>
+        </span>
+        <span><i class="fa fa-ellipsis-v"></i></span>
+        <span>
+            Categories:
+            
+            <a href="/categories.html#Miscellaneous-ref">Miscellaneous</a>
+            
+        </span>
+        <span><i class="fa fa-ellipsis-v"></i></span>
+        <span>
+            Tags:
+            
+            <a href="/tags.html#markdown introduction-ref">markdown introduction</a>
+            
+        <span>
+    </div>
+    <div class="post-entry">
+        <p>This is my note of learning markdown, also a digest from <a href="http://daringfireball.net/projects/markdown/syntax">this paper</a>.</p>
+
+<h3>INTRODUCTION</h3>
+
+<p>Markdown is a text-to-HTML conversion tool for web writers. Markdown allows you to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML).</p>
+
+<p>Thus, “Markdown” is two things: (1) a plain text formatting syntax; and (2) a software tool, written in Perl, that converts the plain text formatting to HTML. See the Syntax page for details pertaining to Markdown’s formatting syntax.</p>
+
+<!--more-->
+
+
+<p>The overriding design goal for Markdown’s formatting syntax is to make it as readable as possible. The idea is that a Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions. While Markdown’s syntax has been influenced by several existing text-to-HTML filters, the single biggest source of inspiration for Markdown’s syntax is the format of plain text email.</p>
+
+<p>The best way to get a feel for Markdown’s formatting syntax is simply to <em>look at a Markdown-formatted document</em>.</p>
+
+<h3>MARKDOWN SYNTEX DETAIL</h3>
+
+<h4>PHILOSOPYH</h4>
+
+<p><em>Markdown is intended to be as easy-to-read and easy-to-write as is feasible.</em></p>
+
+<p><em>Readability</em>, however, is emphasized above all else. A Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions. While Markdown’s syntax has been influenced by several existing text-to-HTML filters — including Setext, atx, Textile, reStructuredText,Grutatext, and EtText — the single biggest source of inspiration for Markdown’s syntax is the format of plain text email.</p>
+
+<p>To this end, <em>Markdown’s syntax is comprised entirely of punctuation characters, which punctuation characters have been carefully chosen so as to look like what they mean.</em> E.g., asterisks around a word actually look like *emphasis*. Markdown lists look like, well, lists. Even blockquotes look like quoted passages of text, assuming you’ve ever used email.</p>
+
+<h4>SYNTEX DETAIL</h4>
+
+<p>1. headers 标题</p>
+
+<p>the number of opening hashes determines the header level.</p>
+
+<p>using 1-6 hash characters at the start of the line, corresponding to header level 1-6.</p>
+
+<h1>This is an H1.</h1>
+
+<h2>This is an H2.</h2>
+
+<h3>This is an H3.</h3>
+
+<h4>This is an H4.</h4>
+
+<h6>This is an H6.</h6>
+
+<p>2. blockquotes 块引用</p>
+
+<p>put a > (right angle brackets) before every line you quoted.</p>
+
+<blockquote><p>Email-style angle brackets
+are used for blockquotes.</p>
+
+<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.</p></blockquote>
+
+<p>blockquotes can be nested by adding additional level of >.</p>
+
+<p>blockquotes can be contain other MARKDOWN elements, including headers,lists,and code blocks.</p>
+
+<p>3. lists 列表</p>
+
+<p>support ordered(numbered) and unordered(bulleded) lists.</p>
+
+<p>(1) unordered list:</p>
+
+<p>adding * or - in front of the line.</p>
+
+<p>- red</p>
+
+<p>- green</p>
+
+<p>- blue</p>
+
+<p>or,</p>
+
+<p>* red</p>
+
+<p>* green</p>
+
+<p>* blue</p>
+
+<p>this have some points for attention.</p>
+
+<p>1) List markers typically start at the left margin, but may be indented by up to three spaces.</p>
+
+<p>2) List items may consist of multiple paragraphs. Each subsequent paragraph in a list item must be indented by either 4 spaces or one Tab.</p>
+
+<p>一个列表项的第一行要在“－”或“＊”或“数学.”后加空格（至多三个），其后此段落的行可以加空格（与第一行保持一致的缩进）。</p>
+
+<p>此列表项的下一个段落以4空格或1个Tab来缩进。</p>
+
+<ol>
+<li><p>This is a list item with two paragraphs.</p>
+
+<p> This is the second paragraph in the list item. You're
+ only required to indent the first line.</p></li>
+<li><p>Anther item in the same list.</p></li>
+</ol>
+
+
+<p>3) Put a blockquote within a list item, the blockquotes's > delimiters need to be indeeted.</p>
+
+<ul>
+<li><p>A list item with a blockquotes:</p>
+
+<blockquote><p>This is a blockquote
+inside a list item.</p></blockquote></li>
+</ul>
+
+
+<p>4) Put a code block within a list item, the code block needs to be indented <em>twice - 8 spaces or two Tabs</em>:</p>
+
+<ul>
+<li><p>A list item with a code block:</p>
+
+<pre><code>  return shell_exec("echo $input | $markdown_script");
+</code></pre></li>
+</ul>
+
+
+<p>(2) ordered list:</p>
+
+<ol>
+<li>red</li>
+<li>Green</li>
+<li>Blue</li>
+</ol>
+
+
+<p>note:</p>
+
+<p>A number-period-space sequence at the beginning of a line will trigger and ordered list. Sometimes, you can backslash-escape the period.</p>
+
+<p>1986. what a great season.</p>
+
+<p>=> 1986\. what a great season.</p>
+
+<p>4. code blocks 代码段</p>
+
+<p>Simply indent every line of the code blocks by at least 4 spaces or 1 Tab.</p>
+
+<p>A code block continues until it reaches a line that is not indented(or the end of the artile).</p>
+
+<p>This is a normal paragraph:</p>
+
+<pre><code>This is a code block.
+</code></pre>
+
+<p>5. horizontal rules  分隔线，水平线</p>
+
+<p>place three or more hyphens, asterisks.行中只有"-"或"<em>"，不能有其他字符。行中的"</em>"或"-"之间可以加空格（也可以不加）。</p>
+
+<p>***</p>
+
+<p>-----------</p>
+
+<p>6. links 链接</p>
+
+<p>方法1：inline style:</p>
+
+<p>An [example](http://url.com/ "an optional title")</p>
+
+<p>方法2：reference style:</p>
+
+<p>An [example][id]........</p>
+
+<p>.......</p>
+
+<p>[id]: http://example.com/ "an optional title"</p>
+
+<p>有时候链接文字比较短，这时可以省略id.</p>
+
+<p>[Google][]</p>
+
+<p>....</p>
+
+<p>[Google]: http://google.com/</p>
+
+<p>7. emphasis</p>
+
+<p>*single asterisk, italic*</p>
+
+<p>**double aterisk, bold**</p>
+
+<p>8. code span</p>
+
+<p>Unlike a preformatted code block, a code span indicates code within a normal paragraph.</p>
+
+<p>Use the <code>printf()</code> function.</p>
+
+<p>9. images   图片</p>
+
+<p>方法1: inline style:</p>
+
+<p>![alt text](/path/to/img.jpg "optional title")</p>
+
+<p>方法2: reference style:</p>
+
+<p>![alt text][id]</p>
+
+<p>...</p>
+
+<p>[id]: /url/to/img.jpg "optional title"</p>
+
+<p>As of this writing, Markdown has no syntex for specifying the dimensions of an image; if this is important to you, you can simply use regular HTML <img> tags.</p>
+
+<p>10. automatic links</p>
+
+<p><a href="http://example/">http://example/</a></p>
+
+<p><a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#x61;&#100;&#100;&#x72;&#x65;&#x73;&#115;&#x40;&#101;&#x78;&#x61;&#109;&#112;&#108;&#101;&#46;&#99;&#x6f;&#109;">&#x61;&#x64;&#x64;&#114;&#x65;&#x73;&#x73;&#64;&#x65;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#x2e;&#99;&#111;&#x6d;</a></p>
+
+<p>11. backslash escapes 转义字符</p>
+
+<p>Markdown allows you to use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead of an HTML <em> tag), you can use backslashes before the asterisks, like this:</p>
+
+<p>\*literal asterisks\*</p>
+
+<p>Markdown provides backslash escapes for the following characters:</p>
+
+<p>\   backslash</p>
+
+<p>`   backtick</p>
+
+<p>*   asterisk</p>
+
+<p>_   underscore</p>
+
+<p>{}  curly braces</p>
+
+<p>[]  square brackets</p>
+
+<p>()  parentheses</p>
+
+<p>#   hash mark</p>
+
+<p>+   plus sign</p>
+
+<p>-   minus sign (hyphen)</p>
+
+<p>.   dot</p>
+
+<p>!   exclamation mark</p>
+
+    </div>
+</div>
+<div class="post-blank post-pager">
+    <ul class="pager">
+        
+        <li class="previous"><a href="/2013-04/hello/">&larr; Prev</a></li>
+        
+        
+        <li class="next"><a href="/2013-08/recent-life/">Next &rarr;</a></li>
+        
+    </ul>
+</div>
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+		var duoshuoQuery = {short_name:"zenghui123"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
+
+
+
+
+     </div>
+     <div class="page-footer">
+         <span>
+             Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> 
+             | Hosted by <a href="http://github.com">Github.com</a> 
+         </span>
+     </div>
+     </div>
+     <script src="/static/js/bootstrap.js" type="text/javascript"></script>
+     <script src="/static/google-code-prettify/prettify.js" type="text/javascript"></script>
+     <script type="text/javascript">
+        $(document).ready(function() {
+            $('pre').addClass('prettyprint').attr('style', 'overflow:auto');
+            prettyPrint();
+        });
+     </script>
+     <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34850864-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+
+</body>
+</html>
+

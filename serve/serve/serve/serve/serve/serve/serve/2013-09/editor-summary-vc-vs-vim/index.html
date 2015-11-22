@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>编辑器小结：VC 与 vim对比 - ZengHui Bao's blog</title>
+    <meta name="description" content="zenghui bao's program world.">
+    <meta name="author" content="zenghui bao">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/favicon.ico" rel="shortcut icon">
+    <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/static/css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/static/google-code-prettify/prettify.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/static/css/application.css" rel="stylesheet" type="text/css" media="all">
+    <script src="/static/js/jquery.js" type="text/javascript"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+     <div class="page-container">
+     <div class="page-heading">
+         <div class="page-brand">
+             <h1><a href="/">A Diligent Programmer</a></h1>
+			 <h2><font size="3">Zenghui Bao's programming world.</font></h2>
+         </div>
+         <div class="page-navbar">
+             <div class="page-navbar-container">
+                 <ul class="page-nav">
+                     <li><a href="/">Home</a></li>
+                     <li><a href="/archive.html">Archive</a></li>
+                     <li><a href="/about">About</a></li>
+                 </ul>
+             </div>
+         </div>
+     </div>
+     <div class="page-article">
+         <div class="page-content">
+    <div class="post-heading">
+        编辑器小结：VC 与 vim对比
+    </div>
+    <div class="post-meta">
+        <span>
+            Posted on:
+            <a href="/2013-09/editor-summary-vc-vs-vim/"><span class='month'>Sep</span> <span class='day'>20</span> <span class='year'>2013</span></a>
+        </span>
+        <span><i class="fa fa-ellipsis-v"></i></span>
+        <span>
+            Categories:
+            
+            <a href="/categories.html#Software_development Linux-ref">Software_development Linux</a>
+            
+        </span>
+        <span><i class="fa fa-ellipsis-v"></i></span>
+        <span>
+            Tags:
+            
+            <a href="/tags.html#VIM VC IDE-ref">VIM VC IDE</a>
+            
+        <span>
+    </div>
+    <div class="post-entry">
+        <p>俗话说“工欲善其事，必先利其器”，编程也是一样。找到一个合适的编程工具，可以大大提高程序员的生产效率。对编程来说，常用的工具有：编辑器、编译器、调试器、工程构建工具（类似make,CMake）、版本控制工具。其中编辑器是程序员中最常用的工具，每天接触，如果能找一个合适的编辑工具，可大大提高编程的效率。</p>
+
+<!--more-->
+
+
+<p>之前一直在Linux平台上工作，喜欢Linux上的工具和文化。最近正式工作，接触到了生产环境下的产品开始，让我对linux工具有了一些自己的理解。现在公司编程使用编辑器vc6(就是老掉牙的visual C++ 6.0)，编辑完之后，用ssh登录到Linux主机，将自己的文件mount到linux上，进行编译、调试。之前我不太理解这种开发方式，我总认为Linux上的工具是很好的(至少要比大部分windows上的工具设计地简洁和高效)，直接在Linux上用vim或emacs编辑代码，再在本机上编译调试就行了，很方便，何必为了使用一个VC6编辑器，切换到windows上工作呢？最近正好看到王垠的<a href="http://www.yinwang.org/blog-cn/2013/04/20/editor-ide/">一篇好文</a>，我也顺便谈一下对编辑器（具体来说，是程序的编辑器）的一些浅见。</p>
+
+<h3>编程文化不同</h3>
+
+<p>Unix文化中有一条著名的原则,KISS,keep it simple,stupid! 只做一件事情，但要把这件事情做到极致。使得在设计各个工具时尽量简单、简洁，向外提供接口，尽量保持其可扩展。所以在Linux上有各种各样的小工具，各个小工具都开放出接口，可以让别的工具调用。这样工具串工具，多个工具组合起来就能完成强大的功能。而Windows的哲学正好相反，各个工具之间是封闭的，互相难以组合。要保持良好的用户体验，一个工具要提供所有东西。Windows强调的是对用户友好，让用户可以快速学会这个工具。所以每个程序都要提供图形界面，且功能设计、界面布局尽量直观易用。而Linux强调的是功能强大，它把每个使用者都当成领域内的专家，把所有东西（包括程序内部的执行细节）都展现给用户，用户可以将其与其它工具组装整合，也可以修改配制（甚至修改源码、编译源码），将其定制成更符合自己使用习惯的工具。</p>
+
+<h3>IDE比Linux上整合的各种小工具强吗？</h3>
+
+<p>毫无疑问，Linux有各种各样功能强大的工具，将其组装起来，肯定比IDE强大多倍。Linux上有编辑器有vim,emacs,编译器有gcc,汇编器as,链接器ld,调试器gdb,ddd，构建工具make,CMake...而Windows把这些东西整合到了一块，叫Visual Studio。老实说，VS挺不错的，对程序员很友好，也有很多实用的功能。但如果单个组件与linux对应的最好工具相比，还有一些差距。比如，vim可以写文本，写email，写c++, python，lua,shell，自己想编辑什么，就加装类似的插件、定制快捷键。GCC可以用各种不同的编译选项，控制生成机器码的每个步骤。而gdb完全是纯命令行，可以看到很多程序内部的执行细节，比较底层的数据布局。还有一些汇编器as,链接器ld(在linux上是由OS提供了)之类，比较底层了，如果感觉用得不爽，可以自己修改一下，或者，自己写一个，编译时再替换原来的工具。IDE的优势是开发效率。开发速度快，写完代码直接点一个按钮就可以编译构建了，而linux上比较麻烦，要先编译一下，如果有错误，还要再调出gdb一个一个调试。感觉查错差不多了，再make一下。而unix上工具的优势是功能强大且容易组合。它比较适合开发那种比较底层的系统软件，可以让程序员掌握编程的每个执行细节。</p>
+
+<h3>VC的优势、Vim的优势</h3>
+
+<p>在写C++代码时，有时会思考vc和vim哪个更好用一些。得到的结论是vc更好用一些。在工作环境中，我把VC加装了各种插件，定制了快捷键，写了几个code snippet，写起代码来各种顺溜。也许没有了记忆负担，写程序时可以更好的专注思考编码，感觉很舒服。老实说，在写c++代码方面，vim肯定没有vc好用。vim当初设计时是考虑把它做成编辑所有文本（不仅仅是程序）的工具，所以没考虑对写程序做特殊的优化。而vc不是通用的文本编辑器，只能用来编辑程序，所以可以更好地理解程序。比如，在写代码时，经常会用来智能补全、跳转到定义处之类功能，vim加个ctags,OmiCppComplete插件也都能实现，但是实现的方式是比较笨拙。它是先对文本打标记，再用正则表达式进行匹配，有时候跳转时会经常出错，而且配置非常麻烦。而vc会真正分析程序的语义，它们的跳转和补全通常是比较精确的。还有一些功能是只有理解了程序的语义才能实现，比如补全时设置成最近几次的记录，把程序中的几行代码挑出来将其自动作为一个类的成员函数，这些功能vim很难实现。vim的优势是高度可定制，且移动速度快。vim可以在行内行间移动，可以在程序块中移动，可以在整个文件、屏幕移动，也可以根据搜索结果移动，如果把这些快捷键用熟了，编程时不需要碰鼠标。还有一个好处是，vim将对文本的各种操作都映射成了快捷键组合，比如复制用yy，删除用x,dd,dw，粘贴用p，撤销用u，而且这些组合键是可以定制的。</p>
+
+<h3>我的选择</h3>
+
+<p>现在要更加客观看待一下windows上的工具，有些工具是挺好用的，比如，VC相对于Vim,wireshark相对于tcpdump，photoshop相对于GIMP。我现在写c++代码用vc6(windows上编程时)，Linux上用eclipse(加个c/c++插件，和vi插件)，有时编辑纯文本也会用用vim和scriber。写python用spyder，写shell用kate。它们都是IDE，挺好，我觉得最适合我的方式是IDE+vi，就在各种开发工具加装vi的插件，这样既可以利用IDE的便利性，又可以利用vi的快速移动和命令操作。</p>
+
+<h3>参考资料</h3>
+
+<p>要理解windows上与Linux上工具的差异，就必须理解Linux与Windows上不同的编程文化，下面有一些不错的资料：</p>
+
+<p>1.<a href="http://book.douban.com/subject/1467587/">《unix编程艺术》</a>，Eric S. Raymond</p>
+
+<p>这是一部最能反映Unix/Linux文化的著作，由unix的几个作者和开源大师Eric Raymond所著。提出了影响深远的unix哲学：KISS。</p>
+
+<p>2.<a href="http://www.cnbeta.com/articles/76147.htm">《完全用Linux工作》</a>，王垠</p>
+
+<p>3.<a href="http://blog.sina.com.cn/s/blog_5d90e82f0101ip7f.html">《谈 Linux，Windows 和 Mac》</a>, 王垠</p>
+
+<p>王垠最近谈论linux,windows,mac的文章，显然没有以前那么偏激了。</p>
+
+<p>4.<a href="http://blog.youxu.info/2013/03/03/unix-haters-2/">《编程珠玑番外篇之番外篇-N 答 UNIX 痛恨者王垠》</a>, 徐宥</p>
+
+<p>Google大牛徐宥对王垠文章的一些评论。</p>
+
+<p>5.<a href="http://www.yinwang.org/blog-cn/2013/04/20/editor-ide/">《编辑器与IDE》</a></p>
+
+<p>6.<a href="http://www.kuqin.com/developtool/20111130/315614.html">《VIM之魅（上）》</a>, <a href="http://www.kuqin.com/developtool/20111213/316169.html">《VIM之魅（下）》</a>，郑晖</p>
+
+<p>这篇文章完整阐述了vim的设计哲学。</p>
+
+<p>7.<a href="http://blog.csdn.net/wooin/article/details/1858917">《手把手教你把Vim改装成一个IDE编程环境》</a></p>
+
+<p>一篇教程，教你一步一步将vim和各种小插件整合成一个强大的IDE。</p>
+
+    </div>
+</div>
+<div class="post-blank post-pager">
+    <ul class="pager">
+        
+        <li class="previous"><a href="/2013-08/recent-life/">&larr; Prev</a></li>
+        
+        
+        <li class="next"><a href="/2013-11/how-to-call-shell-script-in-c-plus-plus-program/">Next &rarr;</a></li>
+        
+    </ul>
+</div>
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+		var duoshuoQuery = {short_name:"zenghui123"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
+
+
+
+
+     </div>
+     <div class="page-footer">
+         <span>
+             Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> 
+             | Hosted by <a href="http://github.com">Github.com</a> 
+         </span>
+     </div>
+     </div>
+     <script src="/static/js/bootstrap.js" type="text/javascript"></script>
+     <script src="/static/google-code-prettify/prettify.js" type="text/javascript"></script>
+     <script type="text/javascript">
+        $(document).ready(function() {
+            $('pre').addClass('prettyprint').attr('style', 'overflow:auto');
+            prettyPrint();
+        });
+     </script>
+     <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34850864-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+
+</body>
+</html>
+

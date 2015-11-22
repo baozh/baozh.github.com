@@ -8,34 +8,31 @@ footer: true
 ---
 
 
-I'm a software engineer currently working for [KEDACOM][link1], mainly to do back-end development of video surveillance products. I graduated from Jiangsu University with a master’s degree in Computer Application in 2013.
+Life@Shanghai
 
-I love reading, thinking, programming, cooking, like to do something funny/geek/stuff at leisure. I appreciate open source culture, unix development philosophy, and familiar with programming in the Linux Environment, making good utilization of Linux tool chain.
+Work@jd
 
-Now I mainly focus on server-side development, give attention to audio/video communication, building high-performance server. In addition,  Studying distributed system is my another favourite. I hope to become an expert in this field.
+Steven(包增辉)，现就职于京东上海(无线业务部)，码农一枚。
 
-I'm now living in Shanghai,China. You can find me in these places: 
+欣赏开源文化，unix编程哲学，闲暇时间喜欢读书、思考、编程、做菜，折腾开源软件。
+
+专注做Linux服务端开发，正努力学习、积累经验。对分布式技术比较感兴趣，初学者。
+
+
+------------------------------------------------------------------------------------------------------------------------
+给自己的勉励：  
+**路漫漫其修远兮，吾将上下而求索**。耐心、坚持。
+
+ 
  
 [GitHub][link2]  
 [Weibo][link3]  
-[Email: bao.z.h.2008@gmail.com][link6]
-
-Key words: C/C++, distribute systems, software development, shell, python
+[Email: bao_z_h@163.com][link6]
 
 
-[link1]: http://www.kedacom.com/
 [link2]: https://github.com/baozh
 [link3]: http://weibo.com/baozenghui
-[link4]: http://www.douban.com/people/baozenghui/
-[link5]: http://www.zhihu.com/people/bao-zeng-hui
-[link6]: mailto:bao.z.h.2008@Gmail.com
 
-
-
-
-
-
-
-
+[link6]: mailto:bao_z_h@163.com
 
 

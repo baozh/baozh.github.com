@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Google C++编程风格指南 - ZengHui Bao's blog</title>
+    <meta name="description" content="zenghui bao's program world.">
+    <meta name="author" content="zenghui bao">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/favicon.ico" rel="shortcut icon">
+    <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/static/css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/static/google-code-prettify/prettify.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/static/css/application.css" rel="stylesheet" type="text/css" media="all">
+    <script src="/static/js/jquery.js" type="text/javascript"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+     <div class="page-container">
+     <div class="page-heading">
+         <div class="page-brand">
+             <h1><a href="/">A Diligent Programmer</a></h1>
+			 <h2><font size="3">Zenghui Bao's programming world.</font></h2>
+         </div>
+         <div class="page-navbar">
+             <div class="page-navbar-container">
+                 <ul class="page-nav">
+                     <li><a href="/">Home</a></li>
+                     <li><a href="/archive.html">Archive</a></li>
+                     <li><a href="/about">About</a></li>
+                 </ul>
+             </div>
+         </div>
+     </div>
+     <div class="page-article">
+         <div class="page-content">
+    <div class="post-heading">
+        Google C++编程风格指南
+    </div>
+    <div class="post-meta">
+        <span>
+            Posted on:
+            <a href="/2014-01/google-cpp-style-guide/"><span class='month'>Jan</span> <span class='day'>28</span> <span class='year'>2014</span></a>
+        </span>
+        <span><i class="fa fa-ellipsis-v"></i></span>
+        <span>
+            Categories:
+            
+            <a href="/categories.html#Software_development C/C++-ref">Software_development C/C++</a>
+            
+        </span>
+        <span><i class="fa fa-ellipsis-v"></i></span>
+        <span>
+            Tags:
+            
+            <a href="/tags.html#c/c++ Google Effective_C++-ref">c/c++ Google Effective_C++</a>
+            
+        <span>
+    </div>
+    <div class="post-entry">
+        <p>前几个月阅读了<a href="http://book.douban.com/subject/25716166/">《从缺陷中学习C/C++》</a>、<a href="http://book.douban.com/subject/25708312/">《C++ primer 5th》</a>，两本书都由潘爱民老师做序，在序中推荐结合《Google C++ Style Guide》一起阅读，所以最近花了点时间读完了这份文档。</p>
+
+<!--more-->
+
+
+<p>这份文档相当于是Google内部对C++的编码规范，阐述了在Google的项目中如何有效使用C++，应遵守哪些规范，避免C++的各种陷阱。对我来说，最有用的莫过于Google对C++的各种特性的取舍。C++是个由各个复杂特性组成的语言，在实际项目运用的时候总会困惑，是否要使用这个特性，应该如何使用，它的应用场合是什么。比如大家比较关心的：是否要使用异常，流的运用，智能指针的使用，函数重载、操作符重载如何运用，何时禁用拷贝构造函数和赋值操作符。</p>
+
+<p>明白一个C++特性的使用场合很重要。它的优点、缺点是什么，使用的度是什么。这些很难在读一些文章后完全理解，只有实践中积累经验、多思考，才能在实践运用自如。实际上，在阅读这份文档的时候，还有很多不理解的地方。比如为何要禁用拷贝构造函数和赋值操作符，为什么不使用流，为什么不使用操作符重载。现在C++的标准库，或者其它各类库都广泛运用了C++的各种特性，如果在项目中规定不使用某些特性，如何与这些库配合编程。</p>
+
+<p>最近经常思考的一个问题：如果在项目的编码规范中规定不使用某些特性，而使用的库却使用这个特性，那如何与这个库配合编程？比如常遇到一个问题：项目中规定不使用异常，但是在STL中使用异常的，如果STL抛出异常，你如何处理？一个广泛的例子是C++的new操作符，如果new失败，会默认抛出bad_alloc异常。可是在项目代码中，我要么看到不检查new的返回值，不catch异常，要么检查返回的指针是否为NULL。关于这点，《Effective C++》有比较好的论述。</p>
+
+<p>我们项目组使用C++的方式是偏C风格的，基本上是C+Class+STL，最多加一点继承。实际上STL用得也不多，基本上使用自己定制的一套基础库。这套编码规范在实际项目中的运用效果不错，但我感觉还是保守了一些，一些好的C++特性，可以提高生产效率的，没有使用到。相比之下，Google的编码风格更加开放一些(但是是有限制的开放)，或者说规定得更加严格、细致，尽量让各种特性的使用限制在一定范围内。</p>
+
+<p>这份文档也要有借鉴地使用，比如有些使用方式是Google特有的，不适合自己的项目场景(比如一些命名规范，某些C++特性的限制使用)，尽量借鉴其安全使用C++的思格(比如不让编译器做多余的动作，把自己的意图清晰地告诉编译器；限制编译器的自动推导，自动生成的代码)，在自己实践的过程中，摸索出自己的一套编码风格。尽量运用好C++的各种特性，提高生产率，又要安全，避免C++的各种陷阱，还要与项目组的其它代码保持一致性。</p>
+
+<p>在学习过程中，阅读别人写的代码也是一种好的学习方式。比如之前看过陈硕写的muduo网络库，代码写得很漂亮，很有Google的风格，它在代码中熟练运用C++的高级特性(boost库，function/bind，智能指针，其实主要是RAII、事件回调)，陈硕称之为"现代C++的编码风格"。还有Google开源了很多C++项目(protobuf,leveldb,glog,gtest)，是不错的学习对象。</p>
+
+<h3>推荐阅读：</h3>
+
+<p>[1] <a href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">Google C++ Style Guide</a><br/>
+[2] <a href="https://github.com/brantyoung/zh-google-styleguide/">Google C++编程风格指南</a></p>
+
+<p>关于C++中的流：<br/>
+[3] <a href="http://www.cppblog.com/converse/archive/2010/07/06/119427.html">C++的流设计很糟糕</a><br/>
+[4] <a href="http://blog.csdn.net/solstice/article/details/6612179">C++ 工程实践(7)：iostream 的用途与局限</a>，陈硕</p>
+
+<p>关于C++中的错误处理：<br/>
+[5] <a href="http://www.cppblog.com/converse/archive/2010/05/29/116689.html">解读google C++ code style谈对C++的理解</a><br/>
+[6] <a href="http://blog.csdn.net/pongba/article/details/1815742">错误处理(Error-Handling)：为何、何时、如何</a>，刘未鹏<br/>
+[7] <a href="http://blog.jobbole.com/54699/">C++的另一种错误处理策略</a></p>
+
+<p>关于C++特性的裁减方案：<br/>
+[8] <a href="http://blog.csdn.net/myan/article/details/1920">编程语言的层次观点——兼谈C++的剪裁方案</a>，孟岩<br/>
+[9] <a href="http://blog.csdn.net/myan/article/details/1778843">用C设计，用C++编码</a>，孟岩</p>
+
+<p>关于C++11新特性的运用：<br/>
+[10] <a href="http://mindhacks.cn/2012/08/27/modern-cpp-practices/">C++11（及现代C++风格）和快速迭代式开发</a>，刘未鹏<br/>
+[11] <a href="http://herbsutter.com/elements-of-modern-c-style/">Elements of Modern C++ Style</a><br/>
+[12] <a href="http://blog.csdn.net/myan/article/details/5877305">C++0X的三件好东西（零）</a>，孟岩<br/>
+[13] <a href="http://coolshell.cn/articles/5265.html">C++11 中值得关注的几大变化（详解）</a>，陈皓</p>
+
+    </div>
+</div>
+<div class="post-blank post-pager">
+    <ul class="pager">
+        
+        <li class="previous"><a href="/2013-11/how-to-call-shell-script-in-c-plus-plus-program/">&larr; Prev</a></li>
+        
+        
+        <li class="next"><a href="/2014-01/how-to-memory/">Next &rarr;</a></li>
+        
+    </ul>
+</div>
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+		var duoshuoQuery = {short_name:"zenghui123"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
+
+
+
+
+     </div>
+     <div class="page-footer">
+         <span>
+             Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> 
+             | Hosted by <a href="http://github.com">Github.com</a> 
+         </span>
+     </div>
+     </div>
+     <script src="/static/js/bootstrap.js" type="text/javascript"></script>
+     <script src="/static/google-code-prettify/prettify.js" type="text/javascript"></script>
+     <script type="text/javascript">
+        $(document).ready(function() {
+            $('pre').addClass('prettyprint').attr('style', 'overflow:auto');
+            prettyPrint();
+        });
+     </script>
+     <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34850864-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+
+</body>
+</html>
+
