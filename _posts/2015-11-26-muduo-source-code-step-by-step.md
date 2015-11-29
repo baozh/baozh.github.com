@@ -33,12 +33,12 @@ tags: muduo
 
 最后要能够达到：在各种环境下，遇到网络问题，能够定位问题出在哪里。
 
-## Step 3  阅读muduo线程库，定时器，runInLoop实现
+## Step 3  阅读[muduo线程库](http://blog.csdn.net/solstice/article/details/5829421)，定时器，runInLoop实现
 muduo的线程库封装了一些常用的多线程设施，比如thread,条件变量，锁，countDownLatch，线程池，线程私有变量，BlockingQueue等。没有boost thread库提供得多，但是也足够用了。有些东西封装得挺有特色，可以看看。定时器和runInLoop几乎是所有网络库的标配。muduo中定时器实现得较简单(用stl::set来存放所有timer)，用timerfd来获取定时事件的到来。具体可参考《Linux多线程服务端编程》第8.2节。runInLoop很有特色、很重要，它可以将一个线程的某些操作 转到 另一个线程来做，这样可以使很多非线程安全的函数变成线程安全的(比如定时器操作)，也可以将某些耗时的操作异步化(比如可以将数据库写操作放到另一个线程处理)。具体实现中，会将一个function对象绑定到另一个loop io线程的待执行列表中，loop io线程处理完所有网络事件、定时器事件后，就会执行所有绑定的function。里面用到了eventfd，来通知那个线程有待执行的funcion了。
 
 可以看出，muduo使用了socket fd(网络IO事件), timerfd(定时器到来事件), eventfd(通知事件), signal fd(信号到来事件)来处理相关的所有事件，只需一个epoll循环，整个程序的处理流程很清晰简洁。
 
-## Step 4  阅读muduo日志库
+## Step 4  阅读[muduo日志库](http://blog.csdn.net/solstice/article/details/7639814)
 muduo日志库的代码不多，很容易阅读。读的时候可参考《Linux C++多线程服务端编程》第5章，走一遍，大概能理解它的流程。阅读的时候，主要学习两点：
 
 1.  从需求、现有的硬件等限制，学习如何设计并实现一个合格的日志库？  
@@ -81,6 +81,7 @@ muduo网络库有很多功能不提供，比如SSL加密，配置业务线程的
 ##参考
 
 《Linux多线程服务端编程 - 使用muduo C++网络库》    陈硕著  
+[《Muduo 网络库：现代非阻塞C++网络编程》演讲](http://blog.csdn.net/solstice/article/details/7703959)
 [陈硕的博客](http://blog.csdn.net/solstice)  
 [陈硕在Boolan上的培训](http://boolan.com/course/4)
 

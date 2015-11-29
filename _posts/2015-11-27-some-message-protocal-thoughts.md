@@ -111,7 +111,7 @@ if  (version == 3) {
 
 
 ## 陈硕书上推荐的消息格式
-[陈硕](http://www.chenshuo.com/)在《Linux多线程服务端编程》第7.5节推荐的消息格式：
+[陈硕](http://www.chenshuo.com/)在[《Linux多线程服务端编程》第7.5节](http://blog.csdn.net/solstice/article/details/6300108)推荐的消息格式：
 
 +-----------------------------------------------------------------------------------------------------------------------+  
 |　　len　　|　　nameLen　　|　　msgName　　｜　　　　protobuf data　　　　|  　checksum　｜  
