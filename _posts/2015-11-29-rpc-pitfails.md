@@ -15,7 +15,7 @@ tags:
 **优点**
 
 1. 交互方式简单，一个service就是一个interface。client/server间的交互协议容易统一。  
-	一般成熟的公司都自己维护的RPC框架(比如百度的sofa-rpc, google的gRpc)，使用它们非常简单，只需要一个proto文件就可以描述两边的协议交互。因为描述文件(proto文件)是确定的，所以两边容易保持一致，基本不会出错。而且大多可用RPC框架生成所有interface的封包、解包代码，用户只需要调调函数即可。
+	一般成熟的公司都自己维护的RPC框架(比如百度的[sofa-pbrpc](https://github.com/baidu/sofa-pbrpc), google的[gRpc](https://github.com/grpc/grpc)，使用它们非常简单，只需要一个proto文件就可以描述两边的协议交互。因为描述文件(proto文件)是确定的，所以两边容易保持一致，基本不会出错。而且大多可用RPC框架生成所有interface的封包、解包代码，用户只需要调调函数即可。
 
 2. 测试方便。  
 	大多RPC框架是跨语言的，所以可用更方便的脚本语言(如python)写测试程序，模拟与C/C++程序的交互。
