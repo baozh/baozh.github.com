@@ -81,7 +81,7 @@ muduo网络库有很多功能不提供，比如SSL加密，配置业务线程的
 ##参考
 
 《Linux多线程服务端编程 - 使用muduo C++网络库》    陈硕著  
-[《Muduo 网络库：现代非阻塞C++网络编程》演讲](http://blog.csdn.net/solstice/article/details/7703959)
+[《Muduo 网络库：现代非阻塞C++网络编程》演讲](http://blog.csdn.net/solstice/article/details/7703959)  
 [陈硕的博客](http://blog.csdn.net/solstice)  
 [陈硕在Boolan上的培训](http://boolan.com/course/4)
 
