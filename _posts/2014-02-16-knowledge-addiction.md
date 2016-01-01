@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[转]求知成瘾，却无作品"
+title: "[转] 求知成瘾，却无作品"
 date: 2014-02-16 01:48
 comments: true
 categories: Miscellaneous
