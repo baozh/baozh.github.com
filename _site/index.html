@@ -35,6 +35,42 @@
          
 <div class="page-content">
     <div class="post-heading">
+        <a href="/2015-12/distributed-system-fundamental-sec/">分布式存储 理论与实践 初探 (二)</a>
+    </div>
+    <div class="post-meta">
+        <span>
+            Posted on:
+            <a href="/2015-12/distributed-system-fundamental-sec/"><span class='month'>Dec</span> <span class='day'>29</span> <span class='year'>2015</span></a>
+        </span>
+        <span><i class="fa fa-ellipsis-v"></i></span>
+        <span>
+            Categories:
+            
+            <a href="/categories.html#distributed_system-ref">distributed_system</a>
+            
+        </span>
+        <span><i class="fa fa-ellipsis-v"></i></span>
+        <span>
+            Tags:
+            
+        <span>
+    </div>
+    <div class="post-entry">
+        <h2>数据分布</h2>
+
+<p>分布式存储系统需要将数据分布到多个节点，并在多个节点之间实现负载均衡。常见的数据分布的方式有两种：一种是哈希分布，如一致性哈希，典型的系统是Amazon Dynamo系统；另一种是顺序分布，即将表格上的数据按主键排序，并切分成多块数据，每个数据存到不同的节点中，典型的系统是Google Bigtable, Taobao Oceanbase。</p>
+
+
+    </div>
+    <div class="post-footer">
+        <div class="read-more">
+            <a href="/2015-12/distributed-system-fundamental-sec/">Read on(阅读全文) &rarr;</a>
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="post-heading">
         <a href="/2015-12/fflush-fsync-difference/">[转] fflush与fsync的区别</a>
     </div>
     <div class="post-meta">
@@ -287,40 +323,6 @@
     <div class="post-footer">
         <div class="read-more">
             <a href="/2015-11/rpc-pitfails/">Read on(阅读全文) &rarr;</a>
-        </div>
-    </div>
-</div>
-
-<div class="page-content">
-    <div class="post-heading">
-        <a href="/2015-11/some-message-protocal-thoughts/">关于消息格式的一些思考</a>
-    </div>
-    <div class="post-meta">
-        <span>
-            Posted on:
-            <a href="/2015-11/some-message-protocal-thoughts/"><span class='month'>Nov</span> <span class='day'>27</span> <span class='year'>2015</span></a>
-        </span>
-        <span><i class="fa fa-ellipsis-v"></i></span>
-        <span>
-            Categories:
-            
-            <a href="/categories.html#software_development-ref">software_development</a>
-            
-        </span>
-        <span><i class="fa fa-ellipsis-v"></i></span>
-        <span>
-            Tags:
-            
-        <span>
-    </div>
-    <div class="post-entry">
-        <p>刚进项目组的时候，各个server之间的消息格式较复杂，有好几个段(字节段)，每个段有bin串、也有json串、C struct，还需要标识每个段的长度、消息的类型等，这使得消息解析的时候很麻烦，要处理各种case。跨平台、跨语言的交互(比如和android交互)就更麻烦，经常要沟通联调好一会，才把消息调通。后来考虑调整一下消息格式，裁减不需要的段，简化交互协议。</p>
-
-
-    </div>
-    <div class="post-footer">
-        <div class="read-more">
-            <a href="/2015-11/some-message-protocal-thoughts/">Read on(阅读全文) &rarr;</a>
         </div>
     </div>
 </div>
