@@ -103,7 +103,8 @@ NodeWatcher监听节点的变更(节点删除，节点创建，节点数据变�
 [Zookeeper C 客户端使用情景分析](http://tech.uc.cn/?p=974)  
 《Zookeeper : Distributed System Coordination》  
 《从Paxos到Zookeeper:从分布式一致性原理与实践》  
-Java 客户端 [ZkClient](https://github.com/adyliu/zkclient), [Curator](http://curator.apache.org/)
+Java 客户端 [ZkClient](https://github.com/adyliu/zkclient), [Curator](http://curator.apache.org/)  
+[ZooKeeper FAQ](http://jm-blog.aliapp.com/?p=1384)
 
 
 
