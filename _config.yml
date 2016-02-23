@@ -10,3 +10,7 @@ syntax_highlighter: rouge
   
 title: ZengHui Bao's blog
 rss_path : /rss.xml
+
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
