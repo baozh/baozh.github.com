@@ -22,7 +22,7 @@ tags:
 
  <br /> 
  
-####runInLoop的实现
+#### runInLoop的实现
 
 runInLoop的实现在[EventLoop.h/cc文件](https://github.com/chenshuo/muduo/blob/master/muduo/net/EventLoop.cc)中，它的实现原理是：如果调用方的正处在此线程时，则直接执行这个函数; 否则，将回调函数(boost::function对象)存入vector中，并唤醒目标线程，之后目标线程从epoll中唤醒后，执行回调函数。保存回调函数的vector原型如下：
 
@@ -37,7 +37,7 @@ std::vector<Functor> pendingFunctors_;
 
  <br /> 
  
-####muduo中的buffer不支持自动缩容
+#### muduo中的buffer不支持自动缩容
 muduo的[buffer](https://github.com/chenshuo/muduo/blob/master/muduo/net/Buffer.h)设计地很精巧，它将数据区域分成prependable,readable,writable三个段，用两个index来指向三个段之间的分界线。相邻两个段的空间可互相利用，可通过指针、数据腾挪来修改相邻两个段的大小。  
 buffer的图示：
 
@@ -117,7 +117,8 @@ buffer在append数据到writable段的时候，会检查当前vec.capacity()中w
 
 
 ------------------------------------------------
-##参考
+
+## 参考
 
 [Muduo 设计与实现之一：Buffer 类的设计](http://blog.csdn.net/solstice/article/details/6329080)
 

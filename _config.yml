@@ -1,9 +1,12 @@
 root: /
 permalink: /:year-:month/:title/
 markdown: kramdown
-highlighter: 
-paginate: 8
 
-title: ZengHui Bao's blog
 gems: [jekyll-paginate]
+paginate: 8
+kramdown:
+input: GFM
+syntax_highlighter: rouge
+  
+title: ZengHui Bao's blog
 rss_path : /rss.xml
