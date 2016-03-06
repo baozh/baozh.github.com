@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Paxos协议 学习小结"
-date: 2016-03-6 16:20
+date: 2016-03-06 16:20
 comments: true
 categories: paxos
 tags: zookeeper paxos
