@@ -35,6 +35,44 @@
          
 <div class="page-content">
     <div class="post-heading">
+        <a href="/2016-03/paxos-learning/">Paxos协议 学习小结</a>
+    </div>
+    <div class="post-meta">
+        <span>
+            Posted on:
+            <a href="/2016-03/paxos-learning/"><span class='month'>Mar</span> <span class='day'>06</span> <span class='year'>2016</span></a>
+        </span>
+        <span><i class="fa fa-ellipsis-v"></i></span>
+        <span>
+            Categories:
+            
+            <a href="/categories/index.html#paxos-ref">paxos</a>
+            
+        </span>
+        <span><i class="fa fa-ellipsis-v"></i></span>
+        <span>
+            Tags:
+            
+            <a href="/tags/index.html#zookeeper-ref">zookeeper</a>
+            
+            <a href="/tags/index.html#paxos-ref">paxos</a>
+            
+        <span>
+    </div>
+    <div class="post-entry">
+        <p>一直对Paxos协议比较感兴趣，之前对这个算法 有耳闻 但只是了解皮毛，最近在学Zookeeper，趁着这股新鲜劲，就花时间研究了下Zookeeper的选举算法实现，再重新学习了Paxos算法，这篇文章算是我的学习总结吧。</p>
+
+
+    </div>
+    <div class="post-footer">
+        <div class="read-more">
+            <a href="/2016-03/paxos-learning/">Read on(阅读全文) &rarr;</a>
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="post-heading">
         <a href="/2016-02/zookeeper-cpp-client/">实现了一个Zookeeper C++客户端</a>
     </div>
     <div class="post-meta">
@@ -286,40 +324,6 @@
     <div class="post-footer">
         <div class="read-more">
             <a href="/2015-12/amazon-dynamo/">Read on(阅读全文) &rarr;</a>
-        </div>
-    </div>
-</div>
-
-<div class="page-content">
-    <div class="post-heading">
-        <a href="/2015-12/stl-vector-problem/">muduo中buffer的一个问题</a>
-    </div>
-    <div class="post-meta">
-        <span>
-            Posted on:
-            <a href="/2015-12/stl-vector-problem/"><span class='month'>Dec</span> <span class='day'>05</span> <span class='year'>2015</span></a>
-        </span>
-        <span><i class="fa fa-ellipsis-v"></i></span>
-        <span>
-            Categories:
-            
-            <a href="/categories/index.html#Software_development-ref">Software_development</a>
-            
-        </span>
-        <span><i class="fa fa-ellipsis-v"></i></span>
-        <span>
-            Tags:
-            
-        <span>
-    </div>
-    <div class="post-entry">
-        <p>今天在压测系统性能时，遇到了一个现象：当短时间发送大量消息(每秒16万条消息)时，内存占用过多(增长到5.4G)，而且之后没有再释放。排查了一下这个问题，找到原因是：muduo中TcpConnection的发送缓冲区增长得太快，而缓冲区是自动增长的，没有自动缩容的功能，导致缓冲区占用的空间越来越大。</p>
-
-
-    </div>
-    <div class="post-footer">
-        <div class="read-more">
-            <a href="/2015-12/stl-vector-problem/">Read on(阅读全文) &rarr;</a>
         </div>
     </div>
 </div>
