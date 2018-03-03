@@ -35,6 +35,39 @@
          
 <div class="page-content">
     <div class="post-heading">
+        <a href="/2018-03/go-context/">Go Context的踩坑经历</a>
+    </div>
+    <div class="post-meta">
+        <span>
+            Posted on:
+            <a href="/2018-03/go-context/"><span class='month'>Mar</span> <span class='day'>03</span> <span class='year'>2018</span></a>
+        </span>
+        <span><i class="fa fa-ellipsis-v"></i></span>
+        <span>
+            Categories:
+            
+        </span>
+        <span><i class="fa fa-ellipsis-v"></i></span>
+        <span>
+            Tags:
+            
+        <span>
+    </div>
+    <div class="post-entry">
+        <p>
+golang在1.7 version引入了context包，它用来处理单个请求在多个go routine的传递上下文数据、(手动/超时)中止routine树。本文主要描述context的实现原理、在实践中遇到的坑。</p>
+
+
+    </div>
+    <div class="post-footer">
+        <div class="read-more">
+            <a href="/2018-03/go-context/">Read on(阅读全文) &rarr;</a>
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="post-heading">
         <a href="/2016-03/paxos-learning/">Paxos协议 学习小结</a>
     </div>
     <div class="post-meta">
@@ -204,7 +237,7 @@
         <span>
     </div>
     <div class="post-entry">
-        <h2 id="section">数据分布</h2>
+        <h2 id="数据分布">数据分布</h2>
 
 <p>分布式存储系统需要将数据分布到多个节点，并在多个节点之间实现负载均衡。常见的数据分布的方式有两种：一种是哈希分布，如一致性哈希，典型的系统是Amazon Dynamo系统；另一种是顺序分布，即将表格上的数据按主键排序，并切分成多块数据，每个数据存到不同的节点中，典型的系统是Google Bigtable, Taobao Oceanbase。</p>
 
@@ -278,7 +311,7 @@
         <span>
     </div>
     <div class="post-entry">
-        <h2 id="section">硬件基础</h2>
+        <h2 id="硬件基础">硬件基础</h2>
 <p>分布式存储系统是运行在通用计算机硬件体系结构上的底层系统，熟悉各种硬件的性能，能帮助我们更好的调整架构，最大限度地发挥硬件的价值。</p>
 
 
@@ -286,44 +319,6 @@
     <div class="post-footer">
         <div class="read-more">
             <a href="/2015-12/distributed-system-fundamental/">Read on(阅读全文) &rarr;</a>
-        </div>
-    </div>
-</div>
-
-<div class="page-content">
-    <div class="post-heading">
-        <a href="/2015-12/amazon-dynamo/">Amazon Dynamo 架构分析</a>
-    </div>
-    <div class="post-meta">
-        <span>
-            Posted on:
-            <a href="/2015-12/amazon-dynamo/"><span class='month'>Dec</span> <span class='day'>27</span> <span class='year'>2015</span></a>
-        </span>
-        <span><i class="fa fa-ellipsis-v"></i></span>
-        <span>
-            Categories:
-            
-            <a href="/categories/index.html#Distributed_system-ref">Distributed_system</a>
-            
-            <a href="/categories/index.html#Dynamo-ref">Dynamo</a>
-            
-        </span>
-        <span><i class="fa fa-ellipsis-v"></i></span>
-        <span>
-            Tags:
-            
-            <a href="/tags/index.html#Dynamo-ref">Dynamo</a>
-            
-        <span>
-    </div>
-    <div class="post-entry">
-        <p>Dynamo是Amazon开发的分布式键值存储系统，它采用去中心化、松散耦合，由数百个服务组成的面向服务架构，只提供简单的键/值(key/value)方式的数据访问接口，不支持复杂的查询。最初用于支持购物车应用、S3服务，Facebook对照其论文实现了一个开源的分布式数据库Cassandra。</p>
-
-
-    </div>
-    <div class="post-footer">
-        <div class="read-more">
-            <a href="/2015-12/amazon-dynamo/">Read on(阅读全文) &rarr;</a>
         </div>
     </div>
 </div>
