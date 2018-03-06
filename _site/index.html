@@ -54,8 +54,16 @@
         <span>
     </div>
     <div class="post-entry">
-        <p>
-golang在1.7 version引入了context包，它用来处理单个请求在多个go routine的传递上下文数据、(手动/超时)中止routine树。本文主要描述context的实现原理、在实践中遇到的坑。</p>
+        <h2 id="0-引言">0 引言</h2>
+
+<p><code class="highlighter-rouge">context</code>是Go中广泛使用的程序包，由Google官方开发，在1.7版本引入。它用来简化在多个go routine传递上下文数据、(手动/超时)中止routine树等操作，比如，官方http包使用context传递请求的上下文数据，gRpc使用context来终止某个请求产生的routine树。由于它使用简单，现在基本变成了编写go公共库的通用规范。笔者在使用context上有一些经验，遂分享下。</p>
+
+<p>本文主要谈谈以下几个方面的内容：</p>
+
+<ol>
+  <li>context实现原理，哪些是需要注意的地方。</li>
+  <li>在实践中遇到的问题，分析问题产生的原因。</li>
+</ol>
 
 
     </div>
