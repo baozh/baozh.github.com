@@ -200,7 +200,7 @@ func (ch *Channel) Publish(ctx context.Context, exchange, key string, mandatory,
 
 **原因：**程序中使用localCache，会每5分钟Refresh(调用注册的回调函数)一次所缓存的变量。localCache中保存了一个context，在调用回调函数时会传进去。如果回调函数依赖context，可能会产生意外的结果。
 
-程序中，回调函数`getAppIDAndAlias`的功能是从mysql中读取相关数据。如果ctx被canel了，会直接返回失败。
+程序中，回调函数`getAppIDAndAlias`的功能是从mysql中读取相关数据。如果ctx被cancel了，会直接返回失败。
 ```
 func getAppIDAndAlias(ctx context.Context, appKey, appSecret string) (string, string, error)
 ```
@@ -260,7 +260,7 @@ func (tx *Tx) awaitDone() {
 
 上线后，每两天左右有1~2次的mysql事务阻塞，导致请求耗时达到120秒。在盘古(内部的mysql运维平台)中查询到所有阻塞的事务在处理同一条记录。
 
-![现象](/assets/images/context-transaction.jpeg){:height="500px"}
+![现象](/assets/images/context-transaction-obscure.jpeg){:height="550px"}
 
 <br>
 #### 3.4.1 处理过程
